@@ -216,9 +216,25 @@ body::before{
 
 </style>
 </head>
+<script>
+window.addEventListener("load", () => {
 
+    const music = document.getElementById("birthdayMusic");
+
+    music.play().catch(() => {
+
+        document.body.addEventListener("click", () => {
+            music.play();
+        }, { once: true });
+
+    });
+
+});
+</script>
 <body>
-
+<audio id="birthdayMusic" autoplay loop>
+    <source src="project/andy.mp3" type="audio/mpeg">
+</audio>
 <!-- قلب و گل های شناور -->
 <div class="floating">
     <span>❤️</span>
@@ -235,7 +251,7 @@ body::before{
 
 <!-- عکس -->
 <div class="frame">
-    <img src="ghazal/ghazal.jpg" alt="غزال">
+    <img src="project/ghazal/ghazal.jpg" alt="غزال">
 </div>
 
 <!-- متن -->
@@ -250,8 +266,26 @@ body::before{
 <a href="#" class="btn">
 💖خیلییییییییییییییییی مخصلیم💖
 </a>
-
+<br>
+<button id="musicBtn" class="btn">
+🎵 پخش آهنگ 🎵
+</button>
 <br><br><br><br><br><br>
+<script>
+const music = document.getElementById("birthdayMusic");
+const btn = document.getElementById("musicBtn");
 
+btn.addEventListener("click", () => {
+
+    if(music.paused){
+        music.play();
+        btn.innerHTML = "⏸ توقف آهنگ";
+    }else{
+        music.pause();
+        btn.innerHTML = "🎵 پخش آهنگ";
+    }
+
+});
+</script>
 </body>
 </html>
