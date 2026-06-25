@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>happy mapy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Lalezar',sans-serif;
+    min-height:100vh;
+    text-align:center;
+    overflow-x:hidden;
+    padding:50px 20px;
+
+    background:linear-gradient(
+        -45deg,
+        #ff4fd8,
+        #c026d3,
+        #9333ea,
+        #ff80bf,
+        #d946ef
+    );
+
+    background-size:500% 500%;
+    animation:bgMove 10s ease infinite;
+    position:relative;
+}
+
+/* نورهای پس زمینه */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.25), transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(255,192,203,.3), transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(255,105,180,.25), transparent 25%);
+    animation:glowBg 8s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index:-1;
+}
+
+@keyframes glowBg{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.15);
+    }
+}
+
+@keyframes bgMove{
+    0%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+/* قاب عکس */
+.frame{
+    width:fit-content;
+    margin:auto;
+
+    padding:12px;
+
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+
+    border:3px solid rgba(255,255,255,.25);
+    border-radius:30px;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.3),
+    0 0 40px rgba(255,105,180,.5),
+    0 0 80px rgba(255,105,180,.4);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.frame img{
+    display:block;
+    width:500px;
+    max-width:90vw;
+    border-radius:22px;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* عنوان */
+.title{
+    margin-top:30px;
+
+    font-size:4rem;
+    color:#ff9800;
+
+    text-shadow:
+    0 0 10px #ff9800,
+    0 0 20px #ff9800,
+    0 0 40px #ff6f00,
+    0 0 70px #ff9800;
+
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+.subtitle{
+    color:white;
+    font-size:2rem;
+    margin-top:15px;
+    text-shadow:0 0 15px rgba(255,255,255,.7);
+}
+
+/* قلب و گل های شناور */
+.floating{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.floating span{
+    position:absolute;
+    bottom:-60px;
+    font-size:35px;
+    animation:fly 12s linear infinite;
+}
+
+.floating span:nth-child(1){left:5%;animation-delay:0s;}
+.floating span:nth-child(2){left:15%;animation-delay:2s;}
+.floating span:nth-child(3){left:25%;animation-delay:4s;}
+.floating span:nth-child(4){left:35%;animation-delay:1s;}
+.floating span:nth-child(5){left:45%;animation-delay:3s;}
+.floating span:nth-child(6){left:55%;animation-delay:5s;}
+.floating span:nth-child(7){left:65%;animation-delay:2s;}
+.floating span:nth-child(8){left:75%;animation-delay:4s;}
+.floating span:nth-child(9){left:85%;animation-delay:1s;}
+.floating span:nth-child(10){left:95%;animation-delay:3s;}
+
+@keyframes fly{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* دکمه */
+.btn{
+    margin-top:30px;
+    display:inline-block;
+    text-decoration:none;
+
+    padding:15px 35px;
+
+    color:white;
+    font-size:1.5rem;
+
+    background:linear-gradient(45deg,#ff5fa2,#ff0080);
+
+    border-radius:50px;
+
+    box-shadow:
+    0 0 15px rgba(255,255,255,.4),
+    0 0 35px rgba(255,0,128,.6);
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+@media(max-width:768px){
+
+    .title{
+        font-size:2.4rem;
+    }
+
+    .subtitle{
+        font-size:1.3rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- قلب و گل های شناور -->
+<div class="floating">
+    <span>❤️</span>
+    <span>🌷</span>
+    <span>❤️</span>
+    <span>🌷</span>
+    <span>❤️</span>
+    <span>🌷</span>
+    <span>❤️</span>
+    <span>🌷</span>
+    <span>❤️</span>
+    <span>🌷</span>
+</div>
+
+<!-- عکس -->
+<div class="frame">
+    <img src="ghazal/ghazal.jpg" alt="غزال">
+</div>
+
+<!-- متن -->
+<h1 class="title">
+🌷 ❤️ غزال جان تولدت مبارک ❤️ 🌷
+</h1>
+
+<p class="subtitle">
+امیدوارم تمام آرزوهای قشنگت برآورده بشه ✨🎂
+</p>
+
+<a href="#" class="btn">
+💖خیلییییییییییییییییی مخصلیم💖
+</a>
+
+<br><br><br><br><br><br>
+
+</body>
+</html>
